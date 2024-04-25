@@ -1,13 +1,13 @@
-package com.example.InventoryManagement1;
+package com.example.InventoryManagement1.controller;
 
+import com.example.InventoryManagement1.service.InventoryService;
+import com.example.InventoryManagement1.model.Inventory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 

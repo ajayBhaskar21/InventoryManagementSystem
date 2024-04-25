@@ -26,6 +26,4 @@ public class TestController {
         return "addProduct";
     }
 
-
-
 }

@@ -1,8 +1,7 @@
-package com.example.InventoryManagement1;
+package com.example.InventoryManagement1.repository;
 
+import com.example.InventoryManagement1.model.Inventory;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.*;
 
 public interface InventoryRepository extends JpaRepository<Inventory, Long> {
 
