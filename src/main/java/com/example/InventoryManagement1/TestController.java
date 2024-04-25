@@ -10,12 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class TestController {
 
 
-
-    @RequestMapping("/home")
-    public String home() {
-        return "home";
-    }
-
     @RequestMapping("/home/")
     public String home2() {
         return "home";

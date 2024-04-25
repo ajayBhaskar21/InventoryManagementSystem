@@ -49,6 +49,16 @@
         a:hover {
             color: #0056b3;
         }
+
+        /* Styling for the logout link */
+        .logout-link {
+            color: red; /* Change link color to red */
+            text-decoration: none;
+        }
+
+        .logout-link:hover {
+            color: darkred; /* Change hover color to darker red */
+        }
     </style>
 </head>
 <body>
@@ -59,6 +69,9 @@
     </tr>
     <tr>
         <td><a href="/productsInventory">View products Inventory</a></td>
+    </tr>
+    <tr>
+        <td class="logout-cell"><a class="logout-link" href="/logout">logout</a></td>
     </tr>
 </table>
 </body>
