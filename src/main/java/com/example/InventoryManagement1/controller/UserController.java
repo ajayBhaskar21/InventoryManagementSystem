@@ -32,7 +32,7 @@ public class UserController {
         // Save the user to the database
         userRepository.save(user);
         // Redirect to a success page or another appropriate page
-        return "redirect:/signup-success";
+        return "redirect:/login";
     }
 
     @RequestMapping("/signup-success")
@@ -40,7 +40,7 @@ public class UserController {
         return "signup-success"; // Return the name of the success page
     }
 
-    @RequestMapping("/login")
+    @GetMapping("/login")
     public String login(HttpSession session) {
         String username = (String) session.getAttribute("username");
         if (username != null)

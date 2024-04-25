@@ -2,6 +2,7 @@ package com.example.InventoryManagement1.controller;
 
 import com.example.InventoryManagement1.service.InventoryService;
 import com.example.InventoryManagement1.model.Inventory;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,21 +20,28 @@ public class InventoryController {
 
     @PostMapping("/addToDB")
     public String addToDB(Inventory inventory) {
+
         inventoryService.addProduct(inventory);
         return "addSuccess";
     }
 
     @GetMapping("/productsInventory")
-    public String displayProductsInventory(Model model) {
-        List<Inventory> products = inventoryService.getProductsInventory();
+    public String displayProductsInventory(Model model, HttpSession session) {
+        String username = (String) session.getAttribute("username");
+        if (username == null)
+            return "redirect:/login";
 
+        List<Inventory> products = inventoryService.getProductsInventory();
         model.addAttribute("products", products);
         return "allProductsInventory";
     }
 
     @GetMapping("/editProductDetails/{id}/")
-    public String editProductDetails(@PathVariable("id") Long id, Model model){
-        // System.out.println("edit product");
+    public String editProductDetails(@PathVariable("id") Long id, Model model, HttpSession session){
+        String username = (String) session.getAttribute("username");
+        if (username == null)
+            return "redirect:/login";
+
         Inventory inventory = inventoryService.getProductsInventoryById(id);
 
         if (inventory != null) {
@@ -62,7 +70,10 @@ public class InventoryController {
     // @GetMapping("")
 
     @GetMapping("/delete/{id}/")
-    public String deleteProduct(@PathVariable("id") Long id) {
+    public String deleteProduct(@PathVariable("id") Long id, HttpSession session) {
+        String username = (String) session.getAttribute("username");
+        if (username == null)
+            return "redirect:/login";
 
         inventoryService.deleteProductsInventoryBasedOnId(id);
         return "deleteSuccess";
